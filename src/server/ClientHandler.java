@@ -24,13 +24,15 @@ public class ClientHandler extends Thread implements ProtocolStrings {
     private Socket socket;
     private PrintWriter output;
     private String userName;
+    private boolean loggedIn;
     
-    public ClientHandler(ChatServer server, Socket socket, String userName){
+    public ClientHandler(ChatServer server, Socket socket){
         this.server = server;
         this.socket = socket;
-        this.userName = userName;
+        loggedIn = false;
     }
-
+    
+        
     @Override
     public void run() {
         try {
@@ -56,19 +58,18 @@ public class ClientHandler extends Thread implements ProtocolStrings {
         } while (!message.equals(STOP) && !message.equals(DISCONNECTED));
         
         
-        if (!message.equals(DISCONNECTED)) {
+        if (message.equals(STOP)) {
             output.println(STOP); //Echo the stop message back to the client for a nice closedown
         }
         
         socket.close();
-        server.removeClient(userName);
-        server.sendUserListToAll();
-        
-        if (message.equals(DISCONNECTED)) {
-            Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Closed a Connection Abruptly");
+        if (loggedIn) {
+            server.removeClient(userName);
+            Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, userName + " has disconnected");
         }else{
-            Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Closed a Connection");
+            Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Anonymous client has disconnected");
         }
+        server.sendUserListToAll();
     }
     
     
@@ -77,10 +78,11 @@ public class ClientHandler extends Thread implements ProtocolStrings {
         String protocol = splitted[0];
         switch(protocol){
             case USER:
-                server.removeClient(userName);
                 userName = splitted[1];
                 server.addClient(userName, this);
+                Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, userName + " has logged-in");
                 server.sendUserListToAll();
+                loggedIn = true;
                 break;
             case MSG:
                 String receivers = splitted[1];

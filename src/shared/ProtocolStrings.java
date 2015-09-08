@@ -13,7 +13,7 @@ public interface ProtocolStrings {
     
     public final static String USER = "USER";
     public final static String MSG = "MSG";
-    public final static String STOP = "STOP";
+    public final static String STOP = "STOP#";
     public final static String USERLIST = "USERLIST";
     
     public final static String DISCONNECTED = "DISCONNECTED"; //not a protocol string, but useful

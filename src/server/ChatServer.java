@@ -7,7 +7,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Properties;
-import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,7 +17,7 @@ public class ChatServer implements ProtocolStrings {
     private static boolean keepRunning = true;
     private static ServerSocket serverSocket;
     private static final Properties properties = Utils.initProperties("server.properties");
-    private ConcurrentHashMap<String, ClientHandler> clients;
+    private ConcurrentHashMap<String, ClientHandler> users;
 
     public static void stopServer() {
         keepRunning = false;
@@ -27,7 +26,7 @@ public class ChatServer implements ProtocolStrings {
     private void runServer() {
         int port = Integer.parseInt(properties.getProperty("port"));
         String ip = properties.getProperty("serverIp");
-        clients = new ConcurrentHashMap<String, ClientHandler>();
+        users = new ConcurrentHashMap<String, ClientHandler>();
 
         Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Sever started. Listening on: " + port + ", bound to: " + ip);
         try {
@@ -35,10 +34,8 @@ public class ChatServer implements ProtocolStrings {
             serverSocket.bind(new InetSocketAddress(ip, port));
             do {
                 Socket socket = serverSocket.accept(); //Important Blocking call
-                Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Connected to a client");
-                String tempUserName = "user" + new Random().nextInt(10000);;
-                ClientHandler client = new ClientHandler(this, socket, tempUserName);
-                clients.put(tempUserName, client);
+                Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Anonymous client has connected");
+                ClientHandler client = new ClientHandler(this, socket);
                 new Thread(client).start();
             } while (keepRunning);
         } catch (IOException ex) {
@@ -47,21 +44,21 @@ public class ChatServer implements ProtocolStrings {
     }
     
     public void removeClient(String userName){
-        clients.remove(userName);
+        users.remove(userName);
     }
     
     public void addClient(String userName, ClientHandler client){
-        clients.put(userName, client);
+        users.put(userName, client);
     }
     
     
     public synchronized void sendUserListToAll(){
         ArrayList<String> userList = new ArrayList<String>();
-        for (String userName : clients.keySet()) {
+        for (String userName : users.keySet()) {
             userList.add(userName);
         }
         
-        for (ClientHandler ch : clients.values()) {
+        for (ClientHandler ch : users.values()) {
             PrintWriter output = ch.getWriter();
             String userNames = "";
             for (String userName : userList) {
@@ -74,17 +71,28 @@ public class ChatServer implements ProtocolStrings {
             }
             output.println(USERLIST + "#" + userNames);
         }
-        Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Connected users: " + clients.size());
+        //Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Logged-in users: " + users.size());
     }
     
     
     public synchronized void sendMsg(String sender, String receivers, String msg){
-        String[] splitted = receivers.split(",");
-        for (String receiver : splitted) {
-            PrintWriter output = clients.get(receiver).getWriter();
-            output.println(MSG + "#" + sender + "#" + msg);
+        if(!receivers.equals("*")){
+            String[] splitted = receivers.split(",");
+            for (String receiver : splitted) {
+                PrintWriter output = users.get(receiver).getWriter();
+                output.println(MSG + "#" + sender + "#" + msg);
+                Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, sender + " sent the message \"" + msg + "\" to " + receivers);
+            }
+        }else{
+            for (ClientHandler ch : users.values()) {
+                if (!ch.getUserName().equals(sender)) {
+                    ch.getWriter().println(MSG + "#" + sender + "#" + msg);
+                }
+            }
+            Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, sender + " sent the message \"" + msg + "\" to everyone");
         }
     }
+    
 
     public static void main(String[] args) {
         String logFile = properties.getProperty("logFile");
