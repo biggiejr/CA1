@@ -1,14 +1,111 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package client;
 
-/**
- *
- * @author Mato
- */
-public class Client {
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+public class Client extends Observable implements Runnable
+{
+  Socket socket;
+  private int port;
+  private InetAddress serverAddress;
+  private Scanner input;
+  private PrintWriter output;
+  private String receivers;
+  private String username;
+  
+  public void connect(String address, int port) throws UnknownHostException, IOException
+  {
+    this.port = port;
+    serverAddress = InetAddress.getByName(address);
+    socket = new Socket(serverAddress, port);
+    input = new Scanner(socket.getInputStream());
+    output = new PrintWriter(socket.getOutputStream(), true);  
+  }
+  public void sendUsername(String username){
+      output.println(username);
+  }
+  
+  public void send(String msg, String receivers)
+  {
+    output.println("MSG#"+receivers + "#" + msg);
+   
     
+  }
+  
+  public void stop() throws IOException{
+    output.println("STOP");
+  }
+  
+  public void receive()
+  {
+    String msg = input.nextLine();
+    if(msg.contains("USERLIST#")){
+    String[] divideString = msg.split("#");
+    String sender = divideString[1];
+    String[] divideNames = sender.split(",");
+   List UserList = new ArrayList<String>();
+      for (String name : divideNames) {
+          UserList.add(name);          
+      }
+            setChanged();
+            notifyObservers(UserList);
+    }else{
+    setChanged();
+    notifyObservers(msg);
+    }
+    
+    if(msg.equals("STOP")){
+      try {
+        socket.close();
+      } catch (IOException ex) {
+        Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+      }
+    }
+    
+  }
+  
+  
+  
+  
+  public static void main(String[] args)
+  {   
+    int port = 9090;
+    String ip = "localhost";
+    if(args.length == 2){
+      port = Integer.parseInt(args[0]);
+      ip = args[1];
+    }
+    try {
+      Client tester = new Client();      
+      tester.connect(ip, port);
+      
+       //Important Blocking call         
+      tester.stop();      
+      //System.in.read();      
+    } catch (UnknownHostException ex) {
+      Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (IOException ex) {
+      Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  }
+
+    @Override
+    public void run() {
+        while(true){
+         String msg = input.nextLine();   
+        receive();
+        
+        }
+    }
 }
+
