@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import client.Client;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import static java.util.Collections.list;
@@ -23,6 +24,10 @@ public class GUI extends javax.swing.JFrame {
 
     ArrayList<String> user = new ArrayList();
 
+    Client client = new Client();
+    
+    
+    
     public GUI() {
         user.add("asd");
         user.add("asasdvd");
@@ -38,8 +43,8 @@ public class GUI extends javax.swing.JFrame {
         userList.setModel(model);
     }
 
-    public String sendMessage() {
-        return messageOutput.getText();
+    public void sendMessage() {
+        client.send(messageOutput.getText(),userList.getSelectedValuesList().toString() );
     }
 
     public List sendUsername() {
@@ -174,8 +179,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        sendMessage();
-        sendToAll();
+        
+        client.send(sendToAll(),messageOutput.getText() );
         messageOutput.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 

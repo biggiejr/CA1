@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import client.Client;
+
 /**
  *
  * @author Mato
@@ -14,12 +16,15 @@ public class SetUsername extends javax.swing.JFrame {
     /**
      * Creates new form SetUsername
      */
+    
+    Client client = new Client();
+    
     public SetUsername() {
         initComponents();
     }
 
-    public String setUsername(){
-        return  jTextField1.getText();
+    public void setUsername(){
+        client.sendUsername(jTextField1.getText());
     }
     
     
@@ -78,6 +83,7 @@ public class SetUsername extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       setUsername();
+      
       GUI gui = new GUI();
       gui.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jButton1ActionPerformed
