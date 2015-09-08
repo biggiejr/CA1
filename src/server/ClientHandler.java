@@ -25,7 +25,7 @@ public class ClientHandler extends Thread implements ProtocolStrings {
     private PrintWriter output;
     private String userName;
     
-    public ClientHandler(ChatServer server, Socket socket){
+    public ClientHandler(ChatServer server, Socket socket, String userName){
         this.server = server;
         this.socket = socket;
         this.userName = userName;
@@ -57,7 +57,7 @@ public class ClientHandler extends Thread implements ProtocolStrings {
         
         
         if (!message.equals(DISCONNECTED)) {
-            output.println(STOP);//Echo the stop message back to the client for a nice closedown
+            output.println(STOP); //Echo the stop message back to the client for a nice closedown
         }
         
         socket.close();
@@ -77,6 +77,7 @@ public class ClientHandler extends Thread implements ProtocolStrings {
         String protocol = splitted[0];
         switch(protocol){
             case USER:
+                server.removeClient(userName);
                 userName = splitted[1];
                 server.addClient(userName, this);
                 server.sendUserListToAll();
@@ -84,10 +85,10 @@ public class ClientHandler extends Thread implements ProtocolStrings {
             case MSG:
                 String receivers = splitted[1];
                 String msg = splitted[2];
-                server.sendMsg(receivers, msg);
+                server.sendMsg(userName, receivers, msg);
                 break;
             case STOP:
-                //nothing, I guess
+                //nothing here, I guess
                 break;
         }
     }
@@ -100,9 +101,5 @@ public class ClientHandler extends Thread implements ProtocolStrings {
     public String getUserName(){
         return userName;
     }
-    
-    //writer.println(message.toUpperCase());
-        //server.sendMsgToAll(message.toUpperCase());
-        //Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, String.format("Received the message: %1$S ", message.toUpperCase()));
     
 }

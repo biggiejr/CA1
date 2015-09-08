@@ -1,0 +1,32 @@
+Sep 08, 2015 3:03:49 PM server.ChatServer runServer
+INFO: Sever started. Listening on: 9090, bound to: localhost
+Sep 08, 2015 3:04:05 PM server.ChatServer runServer
+INFO: Connected to a client
+Sep 08, 2015 3:04:27 PM server.ChatServer sendUserListToAll
+INFO: Connected users: 0
+Sep 08, 2015 3:04:27 PM server.ClientHandler handleClient
+INFO: Closed a Connection Abruptly
+Sep 08, 2015 3:04:42 PM server.ChatServer runServer
+INFO: Connected to a client
+Sep 08, 2015 3:04:47 PM server.ChatServer sendUserListToAll
+INFO: Connected users: 1
+Sep 08, 2015 3:05:00 PM server.ChatServer runServer
+INFO: Connected to a client
+Sep 08, 2015 3:05:05 PM server.ChatServer sendUserListToAll
+INFO: Connected users: 2
+Sep 08, 2015 3:05:22 PM server.ChatServer runServer
+INFO: Connected to a client
+Sep 08, 2015 3:05:28 PM server.ChatServer sendUserListToAll
+INFO: Connected users: 3
+Sep 08, 2015 3:06:30 PM server.ChatServer sendUserListToAll
+INFO: Connected users: 2
+Sep 08, 2015 3:06:30 PM server.ClientHandler handleClient
+INFO: Closed a Connection Abruptly
+Sep 08, 2015 3:06:32 PM server.ChatServer sendUserListToAll
+INFO: Connected users: 1
+Sep 08, 2015 3:06:32 PM server.ClientHandler handleClient
+INFO: Closed a Connection Abruptly
+Sep 08, 2015 3:06:34 PM server.ChatServer sendUserListToAll
+INFO: Connected users: 0
+Sep 08, 2015 3:06:34 PM server.ClientHandler handleClient
+INFO: Closed a Connection Abruptly
