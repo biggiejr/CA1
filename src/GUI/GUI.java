@@ -5,11 +5,13 @@
  */
 package GUI;
 
+import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import static java.util.Collections.list;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JPanel;
 
 /**
  *
@@ -44,8 +46,8 @@ public class GUI extends javax.swing.JFrame {
 
         return userList.getSelectedValuesList();
     }
-    
-    public String sendToAll(){
+
+    public String sendToAll() {
         return "*";
     }
 
@@ -164,10 +166,10 @@ public class GUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         sendMessage();
         sendUsername();
-
+        messageOutput.setText("");
         System.out.println(userList.getSelectedValuesList());
         System.out.println(messageOutput.getText());
-        
+
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -211,6 +213,7 @@ public class GUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new GUI().setVisible(true);
             }
