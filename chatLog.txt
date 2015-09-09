@@ -40,3 +40,11 @@ sep 09, 2015 2:27:58 PM server.ClientHandler handleClient
 INFO: Anonymous client has disconnected
 sep 09, 2015 2:27:58 PM server.ClientHandler handleClient
 INFO: Anonymous client has disconnected
+sep 09, 2015 2:28:18 PM server.ClientHandler handleClient
+INFO: Anonymous client has disconnected
+sep 09, 2015 2:28:18 PM server.ClientHandler handleClient
+INFO: Anonymous client has disconnected
+sep 09, 2015 2:31:47 PM server.ChatServer runServer
+INFO: Anonymous client has connected
+sep 09, 2015 2:31:50 PM server.ClientHandler handleClient
+INFO: Anonymous client has disconnected
