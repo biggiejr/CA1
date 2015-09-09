@@ -31,28 +31,25 @@ public class GUI extends javax.swing.JFrame implements Observer {
 
     ArrayList<String> user = new ArrayList();
 
-    Client client = new Client();
+    Client client;
 
     int port;
     String ip;
+    
 
     public GUI() {
 
         initComponents();
-
-        client = new Client();
-        port = 9090;
-        ip = "localhost";
-        client.addObserver(this);
-        try {
-            client.connect(ip, port);
-        } catch (IOException ex) {
-            Logger.getLogger(SetUsername.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        new Thread(client).start();
+        
+        
 
     }
 
+    public void setClient(Client client){
+        this.client = client;
+        client.addObserver(this);
+    }
+    
     public void analyseArray(ArrayList<String> users) {
         for (int i = 0; i < users.size(); i++) {
             model.addElement(users.get(i));
@@ -260,11 +257,13 @@ public class GUI extends javax.swing.JFrame implements Observer {
                 for (String name : divideNames) {
                     UserList.add(name);
                     analyseArray((ArrayList<String>) UserList);
+                    System.out.println("In the for loop");
                 }
 
             } else {
                 UserList.add(sender);
                 analyseArray((ArrayList<String>) UserList);
+                System.out.println("Out of the for");
 
             }
         }

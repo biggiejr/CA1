@@ -32,7 +32,7 @@ public class Client extends Observable implements Runnable, ProtocolStrings {
     }
 
     public void sendUsername(String username) {
-        output.println(username);
+            output.println(ProtocolStrings.USER+ "#" +username);
     }
 
     public void send(String msg, String receivers) {

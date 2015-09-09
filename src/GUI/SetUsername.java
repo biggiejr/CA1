@@ -38,7 +38,7 @@ public class SetUsername extends javax.swing.JFrame {
             Logger.getLogger(SetUsername.class.getName()).log(Level.SEVERE, null, ex);
         }
         new Thread(client).start();
-        
+        System.out.println("occured");
         
     }
 
@@ -96,13 +96,12 @@ public class SetUsername extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        client.sendUsername(jTextField1.getText());
         
-        
-        SetUsername su = new SetUsername();
         GUI gui = new GUI();
+        gui.setClient(client);
         this.setVisible(false);
         gui.setVisible(rootPaneCheckingEnabled);
+        client.sendUsername(jTextField1.getText());
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
