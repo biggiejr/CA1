@@ -46,30 +46,8 @@ public class Client extends Observable implements Runnable, ProtocolStrings {
 
     public void receive() {
         String msg = input.nextLine();
-        if (msg.contains(ProtocolStrings.USERLIST + "#")) {
-            String[] divideString = msg.split("#");
-            String sender = divideString[1];
-            String[] divideNames = sender.split(",");
-                List UserList = new ArrayList<String>();
-            if (divideNames.length > 1) {
-                for (String name : divideNames) {
-                    UserList.add(name);
-                }
-                setChanged();
-                notifyObservers(UserList);
-            } else {
-                UserList.add(sender);
-                setChanged();
-                notifyObservers(UserList);
-            }
-        }
-        
-        if(msg.contains(ProtocolStrings.MSG + "#")){
-          
-            
-            setChanged();
-            notifyObservers(msg);
-        }
+             setChanged();
+             notifyObservers(msg);
         if (msg.equals(ProtocolStrings.STOP)) {
             try {
                 socket.close();
