@@ -11,9 +11,10 @@ import java.util.Observable;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import shared.ProtocolStrings;
 
 
-public class Client extends Observable implements Runnable
+public class Client extends Observable implements Runnable,ProtocolStrings
 {
   Socket socket;
   private int port;
@@ -37,19 +38,19 @@ public class Client extends Observable implements Runnable
   
   public void send(String msg, String receivers)
   {
-    output.println("MSG#"+receivers + "#" + msg);
+    output.println(ProtocolStrings.MSG+ "#" + receivers + "#" + msg);
    
     
   }
   
   public void stop() throws IOException{
-    output.println("STOP");
+    output.println(ProtocolStrings.STOP);
   }
   
   public void receive()
   {
     String msg = input.nextLine();
-    if(msg.contains("USERLIST#")){
+    if(msg.contains(ProtocolStrings.USERLIST + "#")){
     String[] divideString = msg.split("#");
     String sender = divideString[1];
     String[] divideNames = sender.split(",");
@@ -64,7 +65,7 @@ public class Client extends Observable implements Runnable
     notifyObservers(msg);
     }
     
-    if(msg.equals("STOP")){
+    if(msg.equals(ProtocolStrings.STOP)){
       try {
         socket.close();
       } catch (IOException ex) {
