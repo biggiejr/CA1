@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import shared.ProtocolStrings;
 
 /**
  *
@@ -250,6 +251,27 @@ public class GUI extends javax.swing.JFrame implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         userList.removeAll();
+           List UserList = new ArrayList<String>();
+        if (arg.toString().contains(ProtocolStrings.USERLIST + "#")) {
+            String[] divideString = arg.toString().split("#");
+            String sender = divideString[1];
+            String[] divideNames = sender.split(",");
+            if (divideNames.length > 1) {
+                for (String name : divideNames) {
+                    UserList.add(name);
+                }
+                
+            } else {
+                UserList.add(sender);
+                
+            }
+        }
+        
+        if(arg.toString().contains(ProtocolStrings.MSG + "#")){
+            
+            
+            
+        }
         
         ArrayList<String> namesArr = new ArrayList<String>();
         namesArr.add(arg.toString());
