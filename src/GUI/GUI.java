@@ -54,7 +54,7 @@ public class GUI extends javax.swing.JFrame implements Observer {
     }
 
     public void analyseArray(ArrayList<String> users) {
-        for(int i = 0; i < users.size(); i++) {
+        for (int i = 0; i < users.size(); i++) {
             model.addElement(users.get(i));
         }
         userList.setModel(model);
@@ -251,7 +251,7 @@ public class GUI extends javax.swing.JFrame implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         userList.removeAll();
-           List UserList = new ArrayList<String>();
+        List UserList = new ArrayList<String>();
         if (arg.toString().contains(ProtocolStrings.USERLIST + "#")) {
             String[] divideString = arg.toString().split("#");
             String sender = divideString[1];
@@ -259,23 +259,26 @@ public class GUI extends javax.swing.JFrame implements Observer {
             if (divideNames.length > 1) {
                 for (String name : divideNames) {
                     UserList.add(name);
+                    analyseArray((ArrayList<String>) UserList);
                 }
-                
+
             } else {
                 UserList.add(sender);
-                
+                analyseArray((ArrayList<String>) UserList);
+
             }
         }
-        
-        if(arg.toString().contains(ProtocolStrings.MSG + "#")){
-            
-            
-            
+
+        if (arg.toString().contains(ProtocolStrings.MSG + "#")) {
+            String[] divideString = arg.toString().split("#");
+            String receiver = divideString[1];
+            String message = divideString[2];
+            messageInput.setText(receiver+": "+message);
+
         }
-        
+
         ArrayList<String> namesArr = new ArrayList<String>();
         namesArr.add(arg.toString());
-        analyseArray(namesArr);
 
     }
 }

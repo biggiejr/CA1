@@ -1,104 +1,42 @@
-sep 09, 2015 1:47:55 PM server.ChatServer runServer
+sep 09, 2015 2:18:51 PM server.ChatServer runServer
 INFO: Sever started. Listening on: 9090, bound to: localhost
-sep 09, 2015 1:48:11 PM server.ChatServer runServer
+sep 09, 2015 2:18:58 PM server.ChatServer runServer
 INFO: Anonymous client has connected
-sep 09, 2015 1:48:13 PM server.ClientHandler handleMsg
-INFO: akjnfd has logged-in
-sep 09, 2015 1:48:13 PM server.ChatServer runServer
+sep 09, 2015 2:19:02 PM server.ChatServer runServer
 INFO: Anonymous client has connected
-sep 09, 2015 1:48:14 PM server.ChatServer runServer
+sep 09, 2015 2:19:02 PM server.ChatServer runServer
 INFO: Anonymous client has connected
-sep 09, 2015 1:48:22 PM server.ChatServer runServer
+sep 09, 2015 2:19:17 PM server.ChatServer runServer
 INFO: Anonymous client has connected
-sep 09, 2015 1:48:23 PM server.ClientHandler handleMsg
-INFO: asfd has logged-in
-sep 09, 2015 1:48:23 PM server.ChatServer runServer
+sep 09, 2015 2:19:20 PM server.ChatServer runServer
 INFO: Anonymous client has connected
-sep 09, 2015 1:48:24 PM server.ChatServer runServer
+sep 09, 2015 2:19:21 PM server.ChatServer runServer
 INFO: Anonymous client has connected
-sep 09, 2015 1:48:57 PM server.ClientHandler handleClient
+sep 09, 2015 2:20:48 PM server.ClientHandler handleClient
 INFO: Anonymous client has disconnected
-sep 09, 2015 1:48:57 PM server.ClientHandler handleClient
-INFO: asfd has disconnected
-sep 09, 2015 1:49:03 PM server.ClientHandler handleClient
+sep 09, 2015 2:20:48 PM server.ClientHandler handleClient
 INFO: Anonymous client has disconnected
-sep 09, 2015 1:49:03 PM server.ClientHandler handleClient
-INFO: akjnfd has disconnected
-sep 09, 2015 1:49:03 PM server.ClientHandler handleClient
+sep 09, 2015 2:20:49 PM server.ClientHandler handleClient
 INFO: Anonymous client has disconnected
-sep 09, 2015 1:49:19 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 1:49:21 PM server.ClientHandler handleMsg
-INFO: asdf has logged-in
-sep 09, 2015 1:49:21 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 1:49:21 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 1:49:34 PM server.ClientHandler handleClient
+sep 09, 2015 2:20:49 PM server.ClientHandler handleClient
 INFO: Anonymous client has disconnected
-sep 09, 2015 1:49:34 PM server.ClientHandler handleClient
+sep 09, 2015 2:20:49 PM server.ClientHandler handleClient
 INFO: Anonymous client has disconnected
-sep 09, 2015 1:49:34 PM server.ClientHandler handleClient
-INFO: asdf has disconnected
-sep 09, 2015 1:50:06 PM server.ChatServer runServer
+sep 09, 2015 2:27:22 PM server.ChatServer runServer
 INFO: Anonymous client has connected
-sep 09, 2015 1:50:09 PM server.ClientHandler handleMsg
-INFO: jk has logged-in
-sep 09, 2015 1:50:09 PM server.ChatServer runServer
+sep 09, 2015 2:27:24 PM server.ChatServer runServer
 INFO: Anonymous client has connected
-sep 09, 2015 1:50:09 PM server.ChatServer runServer
+sep 09, 2015 2:27:24 PM server.ChatServer runServer
 INFO: Anonymous client has connected
-sep 09, 2015 1:50:13 PM server.ClientHandler handleClient
+sep 09, 2015 2:27:32 PM server.ChatServer runServer
+INFO: Anonymous client has connected
+sep 09, 2015 2:27:34 PM server.ChatServer runServer
+INFO: Anonymous client has connected
+sep 09, 2015 2:27:34 PM server.ChatServer runServer
+INFO: Anonymous client has connected
+sep 09, 2015 2:27:58 PM server.ClientHandler handleClient
 INFO: Anonymous client has disconnected
-sep 09, 2015 1:50:13 PM server.ClientHandler handleClient
+sep 09, 2015 2:27:58 PM server.ClientHandler handleClient
 INFO: Anonymous client has disconnected
-sep 09, 2015 1:50:13 PM server.ClientHandler handleClient
-INFO: jk has disconnected
-sep 09, 2015 1:58:17 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 1:58:19 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 1:58:19 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 1:58:25 PM server.ClientHandler handleClient
-INFO: Anonymous client has disconnected
-sep 09, 2015 1:58:25 PM server.ClientHandler handleClient
-INFO: Anonymous client has disconnected
-sep 09, 2015 1:58:25 PM server.ClientHandler handleClient
-INFO: Anonymous client has disconnected
-sep 09, 2015 2:00:54 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 2:00:56 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 2:00:56 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 2:01:03 PM server.ClientHandler handleClient
-INFO: Anonymous client has disconnected
-sep 09, 2015 2:01:03 PM server.ClientHandler handleClient
-INFO: Anonymous client has disconnected
-sep 09, 2015 2:01:03 PM server.ClientHandler handleClient
-INFO: Anonymous client has disconnected
-sep 09, 2015 2:01:44 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 2:01:45 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 2:01:45 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 2:03:11 PM server.ClientHandler handleClient
-INFO: Anonymous client has disconnected
-sep 09, 2015 2:03:11 PM server.ClientHandler handleClient
-INFO: Anonymous client has disconnected
-sep 09, 2015 2:03:11 PM server.ClientHandler handleClient
-INFO: Anonymous client has disconnected
-sep 09, 2015 2:03:19 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 2:03:21 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 2:03:21 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 2:06:04 PM server.ClientHandler handleClient
-INFO: Anonymous client has disconnected
-sep 09, 2015 2:06:04 PM server.ClientHandler handleClient
-INFO: Anonymous client has disconnected
-sep 09, 2015 2:06:04 PM server.ClientHandler handleClient
+sep 09, 2015 2:27:58 PM server.ClientHandler handleClient
 INFO: Anonymous client has disconnected
