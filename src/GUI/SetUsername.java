@@ -6,6 +6,11 @@
 package GUI;
 
 import client.Client;
+import java.io.IOException;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,18 +21,27 @@ public class SetUsername extends javax.swing.JFrame {
     /**
      * Creates new form SetUsername
      */
-    
-    Client client = new Client();
-    
+    Client client;
+    int port;
+    String ip;
+
     public SetUsername() {
         initComponents();
+
+        client = new Client();
+        port = 9090;
+        ip = "localhost";
+
+        try {
+            client.connect(ip, port);
+        } catch (IOException ex) {
+            Logger.getLogger(SetUsername.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        new Thread(client).start();
+        
+        
     }
 
-    public void setUsername(){
-        client.sendUsername(jTextField1.getText());
-    }
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,10 +96,15 @@ public class SetUsername extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      setUsername();
-      
-      GUI gui = new GUI();
-      gui.setVisible(rootPaneCheckingEnabled);
+        client.sendUsername(jTextField1.getText());
+        
+        
+        SetUsername su = new SetUsername();
+        GUI gui = new GUI();
+        this.setVisible(false);
+        gui.setVisible(rootPaneCheckingEnabled);
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -128,4 +147,6 @@ public class SetUsername extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+   
 }
