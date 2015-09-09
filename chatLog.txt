@@ -1,56 +1,14 @@
-sep 09, 2015 3:32:59 PM server.ChatServer runServer
+Sep 09, 2015 5:12:30 PM server.ChatServer runServer
 INFO: Sever started. Listening on: 9090, bound to: localhost
-sep 09, 2015 3:33:05 PM server.ChatServer runServer
+Sep 09, 2015 5:12:42 PM server.ChatServer runServer
 INFO: Anonymous client has connected
-sep 09, 2015 3:33:07 PM server.ClientHandler handleMsg
-INFO: asf has logged-in
-sep 09, 2015 3:33:19 PM server.ChatServer runServer
+Sep 09, 2015 5:13:01 PM server.ClientHandler handleMsg
+INFO: hi has logged-in
+Sep 09, 2015 5:13:44 PM server.ChatServer runServer
 INFO: Anonymous client has connected
-sep 09, 2015 3:33:22 PM server.ClientHandler handleMsg
-INFO: asdfsadf has logged-in
-sep 09, 2015 3:33:32 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 3:33:35 PM server.ClientHandler handleMsg
-INFO: asdfsadfasdfasdf has logged-in
-sep 09, 2015 3:33:53 PM server.ClientHandler handleClient
-INFO: asdfsadfasdfasdf has disconnected
-sep 09, 2015 3:34:01 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 3:34:08 PM server.ClientHandler handleMsg
-INFO: abbbb has logged-in
-sep 09, 2015 3:34:21 PM server.ClientHandler handleClient
-INFO: asf has disconnected
-sep 09, 2015 3:34:26 PM server.ClientHandler handleClient
-INFO: asdfsadf has disconnected
-sep 09, 2015 3:34:34 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 3:34:36 PM server.ClientHandler handleMsg
-INFO: bbbn has logged-in
-sep 09, 2015 3:34:48 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 3:34:51 PM server.ClientHandler handleMsg
-INFO: cccn has logged-in
-sep 09, 2015 3:35:05 PM server.ClientHandler handleClient
-INFO: abbbb has disconnected
-sep 09, 2015 3:35:06 PM server.ClientHandler handleClient
-INFO: bbbn has disconnected
-sep 09, 2015 3:35:08 PM server.ClientHandler handleClient
-INFO: cccn has disconnected
-sep 09, 2015 3:35:22 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 3:35:24 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 3:35:25 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 09, 2015 3:35:26 PM server.ClientHandler handleMsg
-INFO: aa has logged-in
-sep 09, 2015 3:35:31 PM server.ClientHandler handleMsg
-INFO: bb has logged-in
-sep 09, 2015 3:35:35 PM server.ClientHandler handleMsg
-INFO: cc has logged-in
-sep 09, 2015 3:35:48 PM server.ClientHandler handleClient
-INFO: bb has disconnected
-sep 09, 2015 3:35:50 PM server.ClientHandler handleClient
-INFO: cc has disconnected
-sep 09, 2015 3:35:52 PM server.ClientHandler handleClient
-INFO: aa has disconnected
+Sep 09, 2015 5:13:49 PM server.ClientHandler handleMsg
+INFO: Ban has logged-in
+Sep 09, 2015 5:13:54 PM server.ClientHandler handleClient
+INFO: Ban has disconnected
+Sep 09, 2015 5:13:55 PM server.ClientHandler handleClient
+INFO: hi has disconnected

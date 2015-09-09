@@ -1,5 +1,6 @@
 package server;
 
+import server.exceptions.NonExistantReceiverException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.InetSocketAddress;
@@ -75,10 +76,13 @@ public class ChatServer implements ProtocolStrings {
     }
     
     
-    public synchronized void sendMsg(String sender, String receivers, String msg){
+    public synchronized void sendMsg(String sender, String receivers, String msg) throws NonExistantReceiverException{
         if(!receivers.equals("*")){
             String[] splitted = receivers.split(",");
             for (String receiver : splitted) {
+                if (!users.containsKey(receiver)) {
+                    throw new NonExistantReceiverException(receiver);
+                }
                 PrintWriter output = users.get(receiver).getWriter();
                 output.println(MSG + "#" + sender + "#" + msg);
                 Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, sender + " sent the message \"" + msg + "\" to " + receivers);
