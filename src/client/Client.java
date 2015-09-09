@@ -54,6 +54,7 @@ public class Client extends Observable implements Runnable,ProtocolStrings
     String[] divideString = msg.split("#");
     String sender = divideString[1];
     String[] divideNames = sender.split(",");
+    if(divideNames.length>1){
    List UserList = new ArrayList<String>();
       for (String name : divideNames) {
           UserList.add(name);          
@@ -73,6 +74,7 @@ public class Client extends Observable implements Runnable,ProtocolStrings
       }
     }
     
+    }
   }
   
   
