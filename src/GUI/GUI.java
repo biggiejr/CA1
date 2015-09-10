@@ -31,6 +31,7 @@ public class GUI extends javax.swing.JFrame implements Observer {
     public GUI() {
 
         initComponents();
+        messageInput.setEditable(false);
 
     }
 
@@ -260,9 +261,7 @@ public class GUI extends javax.swing.JFrame implements Observer {
         List UserList = new ArrayList<>();
         
         if(arg.toString().equals(ProtocolStrings.USERLIST + "#")){
-            for (Object UserObject : UserList) {
-                UserList.remove(UserObject);
-            }
+            analyseArray(new ArrayList<String>());
         }else{
         if (arg.toString().contains(ProtocolStrings.USERLIST + "#")) {
             String[] divideString = arg.toString().split("#");
@@ -274,12 +273,12 @@ public class GUI extends javax.swing.JFrame implements Observer {
 
                     UserList.add(name);
 
-                    System.out.println("In the for loop");
+                    //System.out.println("In the for loop");
                 }
 
             } else {
                 UserList.add(sender);
-                System.out.println("Out of the for");
+                //System.out.println("Out of the for");
 
             }
             analyseArray((ArrayList<String>) UserList);
@@ -291,11 +290,8 @@ public class GUI extends javax.swing.JFrame implements Observer {
             String[] divideString = arg.toString().split("#");
             String receiver = divideString[1];
             String message = divideString[2];
-            messageInput.setText(receiver + ": " + message);
+            messageInput.setText(messageInput.getText() + "\n" + receiver + ": " + message);
 
         }
-
-//        ArrayList<String> namesArr = new ArrayList<String>();
-//        namesArr.add(arg.toString());
     }
 }
