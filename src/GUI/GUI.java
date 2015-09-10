@@ -35,22 +35,24 @@ public class GUI extends javax.swing.JFrame implements Observer {
 
     int port;
     String ip;
-    
 
     public GUI() {
 
         initComponents();
-        
-        
 
     }
+    
+    public void setLoggedUser(String txt){
+        loggedAs.setText(txt);
+    }
 
-    public void setClient(Client client){
+    public void setClient(Client client) {
         this.client = client;
         client.addObserver(this);
     }
-    
+
     public void analyseArray(ArrayList<String> users) {
+        model.removeAllElements();
         for (int i = 0; i < users.size(); i++) {
             model.addElement(users.get(i));
         }
@@ -58,7 +60,12 @@ public class GUI extends javax.swing.JFrame implements Observer {
     }
 
     public void sendMessage() {
-        client.send(messageOutput.getText(), userList.getSelectedValuesList().toString());
+        
+        String temp = userList.getSelectedValuesList().toString();
+        
+        
+        client.send(messageOutput.getText(), temp.substring(1, temp.length()-1));
+        System.out.println(temp.substring(1, temp.length()-1)+" testing");
     }
 
     public List sendUsername() {
@@ -89,6 +96,7 @@ public class GUI extends javax.swing.JFrame implements Observer {
         messageOutput = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        loggedAs = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -139,26 +147,35 @@ public class GUI extends javax.swing.JFrame implements Observer {
             }
         });
 
+        loggedAs.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(179, 179, 179)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(179, 179, 179)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(loggedAs)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addContainerGap()
+                .addComponent(loggedAs)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -240,6 +257,7 @@ public class GUI extends javax.swing.JFrame implements Observer {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel loggedAs;
     private javax.swing.JTextArea messageInput;
     private javax.swing.JTextArea messageOutput;
     private javax.swing.JList userList;
@@ -247,37 +265,41 @@ public class GUI extends javax.swing.JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        userList.removeAll();
-        List UserList = new ArrayList<String>();
+        
+        List UserList = new ArrayList<>();
         if (arg.toString().contains(ProtocolStrings.USERLIST + "#")) {
             String[] divideString = arg.toString().split("#");
             String sender = divideString[1];
             String[] divideNames = sender.split(",");
             if (divideNames.length > 1) {
                 for (String name : divideNames) {
+                    
+                    //userList.removeAll();
                     UserList.add(name);
-                    analyseArray((ArrayList<String>) UserList);
+
                     System.out.println("In the for loop");
                 }
+                
 
             } else {
                 UserList.add(sender);
-                analyseArray((ArrayList<String>) UserList);
                 System.out.println("Out of the for");
 
             }
+            analyseArray((ArrayList<String>) UserList);
+
         }
 
         if (arg.toString().contains(ProtocolStrings.MSG + "#")) {
             String[] divideString = arg.toString().split("#");
             String receiver = divideString[1];
             String message = divideString[2];
-            messageInput.setText(receiver+": "+message);
+            messageInput.setText(receiver + ": " + message);
 
         }
 
-        ArrayList<String> namesArr = new ArrayList<String>();
-        namesArr.add(arg.toString());
+//        ArrayList<String> namesArr = new ArrayList<String>();
+//        namesArr.add(arg.toString());
 
     }
 }

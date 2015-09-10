@@ -102,6 +102,7 @@ public class SetUsername extends javax.swing.JFrame {
         this.setVisible(false);
         gui.setVisible(rootPaneCheckingEnabled);
         client.sendUsername(jTextField1.getText());
+        gui.setLoggedUser(jTextField1.getText());
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
