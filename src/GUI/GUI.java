@@ -41,8 +41,8 @@ public class GUI extends javax.swing.JFrame implements Observer {
         initComponents();
 
     }
-    
-    public void setLoggedUser(String txt){
+
+    public void setLoggedUser(String txt) {
         loggedAs.setText(txt);
     }
 
@@ -60,12 +60,11 @@ public class GUI extends javax.swing.JFrame implements Observer {
     }
 
     public void sendMessage() {
-        
+
         String temp = userList.getSelectedValuesList().toString();
-        
-        
-        client.send(messageOutput.getText(), temp.substring(1, temp.length()-1));
-        System.out.println(temp.substring(1, temp.length()-1)+" testing");
+
+        client.send(messageOutput.getText(), temp.substring(1, temp.length() - 1));
+        System.out.println(temp.substring(1, temp.length() - 1) + " testing");
     }
 
     public List sendUsername() {
@@ -265,7 +264,7 @@ public class GUI extends javax.swing.JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        
+
         List UserList = new ArrayList<>();
         if (arg.toString().contains(ProtocolStrings.USERLIST + "#")) {
             String[] divideString = arg.toString().split("#");
@@ -273,13 +272,11 @@ public class GUI extends javax.swing.JFrame implements Observer {
             String[] divideNames = sender.split(",");
             if (divideNames.length > 1) {
                 for (String name : divideNames) {
-                    
-                    //userList.removeAll();
+
                     UserList.add(name);
 
                     System.out.println("In the for loop");
                 }
-                
 
             } else {
                 UserList.add(sender);
@@ -300,6 +297,5 @@ public class GUI extends javax.swing.JFrame implements Observer {
 
 //        ArrayList<String> namesArr = new ArrayList<String>();
 //        namesArr.add(arg.toString());
-
     }
 }

@@ -82,7 +82,7 @@ public class Client extends Observable implements Runnable, ProtocolStrings {
     @Override
     public void run() {
         while (true) {
-            String msg = input.nextLine();
+            
             receive();
 
         }
