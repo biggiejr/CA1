@@ -1,20 +1,8 @@
-Sep 10, 2015 2:15:28 PM server.ChatServer runServer
+Sep 10, 2015 2:21:06 PM server.ChatServer runServer
 INFO: Sever started. Listening on: 9090, bound to: localhost
-Sep 10, 2015 2:15:35 PM server.ChatServer runServer
+Sep 10, 2015 2:21:12 PM server.ChatServer runServer
 INFO: Anonymous client has connected
-Sep 10, 2015 2:15:38 PM server.ClientHandler handleMsg
-INFO: a has logged-in
-Sep 10, 2015 2:15:43 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-Sep 10, 2015 2:15:45 PM server.ClientHandler handleMsg
-INFO: b has logged-in
-Sep 10, 2015 2:16:00 PM server.ChatServer sendMsg
-INFO: a sent the message "hi" to b
-Sep 10, 2015 2:16:05 PM server.ChatServer sendMsg
-INFO: a sent the message "yo" to b
-Sep 10, 2015 2:16:10 PM server.ChatServer sendMsg
-INFO: b sent the message ",sup" to a
-Sep 10, 2015 2:16:21 PM server.ClientHandler handleClient
-INFO: a has disconnected
-Sep 10, 2015 2:16:22 PM server.ClientHandler handleClient
-INFO: b has disconnected
+Sep 10, 2015 2:21:14 PM server.ClientHandler handleMsg
+INFO: asdas has logged-in
+Sep 10, 2015 2:21:18 PM server.ClientHandler handleClient
+INFO: asdas has disconnected

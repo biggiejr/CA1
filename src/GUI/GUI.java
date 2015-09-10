@@ -32,6 +32,7 @@ public class GUI extends javax.swing.JFrame implements Observer {
 
         initComponents();
         messageInput.setEditable(false);
+        messageOutput.setText("");
 
     }
 
@@ -196,7 +197,7 @@ public class GUI extends javax.swing.JFrame implements Observer {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        client.send(sendToAll(), messageOutput.getText());
+        client.send(messageOutput.getText(), sendToAll());
         messageOutput.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
