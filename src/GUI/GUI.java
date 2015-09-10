@@ -6,19 +6,11 @@
 package GUI;
 
 import client.Client;
-import java.awt.Component;
-import java.awt.GridBagLayout;
-import java.io.IOException;
 import java.util.ArrayList;
-import static java.util.Collections.list;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
-import javax.swing.JPanel;
 import shared.ProtocolStrings;
 
 /**
@@ -291,7 +283,7 @@ public class GUI extends javax.swing.JFrame implements Observer {
             String[] divideString = arg.toString().split("#");
             String receiver = divideString[1];
             String message = divideString[2];
-            messageInput.setText(receiver + ": " + message);
+            messageInput.setText(messageInput.getText()+"\n"+receiver + ": " + message);
 
         }
 

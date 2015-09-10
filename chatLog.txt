@@ -1,16 +1,94 @@
-sep 10, 2015 1:08:58 PM server.ChatServer runServer
+sep 10, 2015 1:24:43 PM server.ChatServer runServer
 INFO: Sever started. Listening on: 9090, bound to: localhost
-sep 10, 2015 1:09:05 PM server.ChatServer runServer
+sep 10, 2015 1:24:49 PM server.ChatServer runServer
 INFO: Anonymous client has connected
-sep 10, 2015 1:09:07 PM server.ChatServer runServer
+sep 10, 2015 1:24:50 PM server.ChatServer runServer
 INFO: Anonymous client has connected
-sep 10, 2015 1:09:08 PM server.ClientHandler handleMsg
+sep 10, 2015 1:24:51 PM server.ClientHandler handleMsg
 INFO: a has logged-in
-sep 10, 2015 1:09:09 PM server.ChatServer runServer
-INFO: Anonymous client has connected
-sep 10, 2015 1:09:12 PM server.ClientHandler handleMsg
+sep 10, 2015 1:24:55 PM server.ClientHandler handleMsg
 INFO: b has logged-in
-sep 10, 2015 1:09:15 PM server.ClientHandler handleMsg
+sep 10, 2015 1:24:58 PM server.ChatServer sendMsg
+INFO: b sent the message ",jn" to a
+sep 10, 2015 1:25:07 PM server.ChatServer runServer
+INFO: Anonymous client has connected
+sep 10, 2015 1:25:10 PM server.ClientHandler handleMsg
 INFO: c has logged-in
-sep 10, 2015 1:09:20 PM server.ChatServer sendMsg
-INFO: b sent the message ",jn" to a, c
+sep 10, 2015 1:25:13 PM server.ChatServer sendMsg
+INFO: c sent the message ",jn" to b
+sep 10, 2015 1:26:12 PM server.ClientHandler handleClient
+INFO: c has disconnected
+sep 10, 2015 1:26:14 PM server.ClientHandler handleClient
+INFO: b has disconnected
+sep 10, 2015 1:26:15 PM server.ClientHandler handleClient
+INFO: a has disconnected
+sep 10, 2015 1:26:20 PM server.ChatServer runServer
+INFO: Anonymous client has connected
+sep 10, 2015 1:26:24 PM server.ClientHandler handleMsg
+INFO: a has logged-in
+sep 10, 2015 1:26:25 PM server.ChatServer runServer
+INFO: Anonymous client has connected
+sep 10, 2015 1:26:28 PM server.ClientHandler handleMsg
+INFO: b has logged-in
+sep 10, 2015 1:26:31 PM server.ChatServer sendMsg
+INFO: b sent the message ",jn" to a
+sep 10, 2015 1:26:39 PM server.ChatServer runServer
+INFO: Anonymous client has connected
+sep 10, 2015 1:26:41 PM server.ClientHandler handleMsg
+INFO: c has logged-in
+sep 10, 2015 1:26:47 PM server.ChatServer sendMsg
+INFO: c sent the message ",jn" to b
+sep 10, 2015 1:26:57 PM server.ChatServer sendMsg
+INFO: c sent the message "asfdasfd" to b
+sep 10, 2015 1:27:00 PM server.ClientHandler handleClient
+INFO: c has disconnected
+sep 10, 2015 1:27:01 PM server.ClientHandler handleClient
+INFO: b has disconnected
+sep 10, 2015 1:27:02 PM server.ClientHandler handleClient
+INFO: a has disconnected
+sep 10, 2015 1:27:18 PM server.ChatServer runServer
+INFO: Anonymous client has connected
+sep 10, 2015 1:27:21 PM server.ChatServer runServer
+INFO: Anonymous client has connected
+sep 10, 2015 1:27:21 PM server.ClientHandler handleMsg
+INFO: a has logged-in
+sep 10, 2015 1:27:23 PM server.ChatServer runServer
+INFO: Anonymous client has connected
+sep 10, 2015 1:27:25 PM server.ClientHandler handleMsg
+INFO: b has logged-in
+sep 10, 2015 1:27:29 PM server.ClientHandler handleMsg
+INFO: c has logged-in
+sep 10, 2015 1:27:32 PM server.ChatServer sendMsg
+INFO: c sent the message ",jn" to b
+sep 10, 2015 1:27:38 PM server.ClientHandler handleClient
+INFO: c has disconnected
+sep 10, 2015 1:28:53 PM server.ClientHandler handleClient
+INFO: a has disconnected
+sep 10, 2015 1:28:55 PM server.ClientHandler handleClient
+INFO: b has disconnected
+sep 10, 2015 1:29:11 PM server.ChatServer runServer
+INFO: Anonymous client has connected
+sep 10, 2015 1:29:14 PM server.ChatServer runServer
+INFO: Anonymous client has connected
+sep 10, 2015 1:29:16 PM server.ClientHandler handleMsg
+INFO: a has logged-in
+sep 10, 2015 1:29:16 PM server.ChatServer runServer
+INFO: Anonymous client has connected
+sep 10, 2015 1:29:19 PM server.ClientHandler handleMsg
+INFO: b has logged-in
+sep 10, 2015 1:29:22 PM server.ClientHandler handleMsg
+INFO: c has logged-in
+sep 10, 2015 1:29:25 PM server.ChatServer sendMsg
+INFO: c sent the message ",jn" to b
+sep 10, 2015 1:29:28 PM server.ChatServer sendMsg
+INFO: c sent the message "asdasd" to b
+sep 10, 2015 1:29:38 PM server.ChatServer sendMsg
+INFO: c sent the message "asdfasdf" to a
+sep 10, 2015 1:29:42 PM server.ChatServer sendMsg
+INFO: b sent the message ",jnsadf" to a
+sep 10, 2015 1:29:45 PM server.ClientHandler handleClient
+INFO: b has disconnected
+sep 10, 2015 1:29:46 PM server.ClientHandler handleClient
+INFO: c has disconnected
+sep 10, 2015 1:29:46 PM server.ClientHandler handleClient
+INFO: a has disconnected
