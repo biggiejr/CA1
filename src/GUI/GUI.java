@@ -31,6 +31,8 @@ public class GUI extends javax.swing.JFrame implements Observer {
     public GUI() {
 
         initComponents();
+        messageInput.setEditable(false);
+        messageOutput.setText("");
 
     }
 
@@ -195,7 +197,7 @@ public class GUI extends javax.swing.JFrame implements Observer {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        client.send(sendToAll(), messageOutput.getText());
+        client.send(messageOutput.getText(), sendToAll());
         messageOutput.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -260,9 +262,7 @@ public class GUI extends javax.swing.JFrame implements Observer {
         List UserList = new ArrayList<>();
         
         if(arg.toString().equals(ProtocolStrings.USERLIST + "#")){
-            for (Object UserObject : UserList) {
-                UserList.remove(UserObject);
-            }
+            analyseArray(new ArrayList<String>());
         }else{
         if (arg.toString().contains(ProtocolStrings.USERLIST + "#")) {
             String[] divideString = arg.toString().split("#");
@@ -274,12 +274,12 @@ public class GUI extends javax.swing.JFrame implements Observer {
 
                     UserList.add(name);
 
-                    System.out.println("In the for loop");
+                    //System.out.println("In the for loop");
                 }
 
             } else {
                 UserList.add(sender);
-                System.out.println("Out of the for");
+                //System.out.println("Out of the for");
 
             }
             analyseArray((ArrayList<String>) UserList);
@@ -294,8 +294,5 @@ public class GUI extends javax.swing.JFrame implements Observer {
             messageInput.setText(messageInput.getText()+"\n"+receiver + ": " + message);
 
         }
-
-//        ArrayList<String> namesArr = new ArrayList<String>();
-//        namesArr.add(arg.toString());
     }
 }
