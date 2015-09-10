@@ -33,6 +33,7 @@ public class Client extends Observable implements Runnable, ProtocolStrings {
 
     public void sendUsername(String username) {
             output.println(ProtocolStrings.USER+ "#" +username);
+            //return ProtocolStrings.USER+ "#" +username;//just for testing purposes
     }
 
     public void send(String msg, String receivers) {
@@ -44,7 +45,7 @@ public class Client extends Observable implements Runnable, ProtocolStrings {
         output.println(ProtocolStrings.STOP);
     }
 
-    public void receive() {
+    public String receive() {
         String msg = input.nextLine();
              setChanged();
              notifyObservers(msg);
@@ -55,6 +56,7 @@ public class Client extends Observable implements Runnable, ProtocolStrings {
                 Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        return msg ;//testing purposes
 
     }
 

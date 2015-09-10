@@ -291,7 +291,7 @@ public class GUI extends javax.swing.JFrame implements Observer {
             String[] divideString = arg.toString().split("#");
             String receiver = divideString[1];
             String message = divideString[2];
-            messageInput.setText(receiver + ": " + message);
+            messageInput.setText(messageInput.getText()+"\n"+receiver + ": " + message);
 
         }
 
