@@ -258,8 +258,15 @@ public class GUI extends javax.swing.JFrame implements Observer {
     public void update(Observable o, Object arg) {
 
         List UserList = new ArrayList<>();
+        
+        if(arg.toString().equals(ProtocolStrings.USERLIST + "#")){
+            for (Object UserObject : UserList) {
+                UserList.remove(UserObject);
+            }
+        }else{
         if (arg.toString().contains(ProtocolStrings.USERLIST + "#")) {
             String[] divideString = arg.toString().split("#");
+            
             String sender = divideString[1];
             String[] divideNames = sender.split(",");
             if (divideNames.length > 1) {
@@ -278,12 +285,13 @@ public class GUI extends javax.swing.JFrame implements Observer {
             analyseArray((ArrayList<String>) UserList);
 
         }
+        }
 
         if (arg.toString().contains(ProtocolStrings.MSG + "#")) {
             String[] divideString = arg.toString().split("#");
             String receiver = divideString[1];
             String message = divideString[2];
-            messageInput.setText(messageInput.getText()+"\n"+receiver + ": " + message);
+            messageInput.setText(receiver + ": " + message);
 
         }
 
