@@ -61,13 +61,13 @@ public class ClientHandler extends Thread implements ProtocolStrings {
             } catch (NoSuchElementException e) {
                 message = DISCONNECTED;
             } catch (InvalidProtocolException ex) {
-                Logger.getLogger(ClientHandler.class.getName()).log(Level.INFO, "Received invalid protocol. Server received: \"" + ex.getMessage() + "\"", ex);
+                Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Received invalid protocol. Server received: \"" + ex.getMessage() + "\"", ex);
             } catch (NotLoggedInException ex) {
-                Logger.getLogger(ClientHandler.class.getName()).log(Level.INFO, "Client attempted to send a msg without having logged-in first", ex);
+                Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Client attempted to send a msg without having logged-in first", ex);
             } catch (EmptyUserNameSuppliedException ex) {
-                Logger.getLogger(ClientHandler.class.getName()).log(Level.INFO, "Client suppied an empty user name", ex);
+                Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Client suppied an empty user name", ex);
             } catch (NonExistantReceiverException ex) {
-                Logger.getLogger(ClientHandler.class.getName()).log(Level.INFO, "Client attempted to send a msg to a non-existant user: " + ex.getMessage(), ex);
+                Logger.getLogger(ChatServer.class.getName()).log(Level.INFO, "Client attempted to send a msg to a non-existant user: " + ex.getMessage(), ex);
             }
         } while (!message.equals(STOP) && !message.equals(DISCONNECTED));
         
